@@ -6,6 +6,6 @@ def sg_delete(sg_name):
 		if (sgn.get_children().to_list()):
 			print "Cannot delete SG {} which has snapshots".format(sgn)
 		else:
-			sgn.delete()
+			sgn.delete(delete_members=True)
 
 
