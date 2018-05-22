@@ -1,0 +1,9 @@
+--------------------+---------------------------------------+-------+-----------
+Volume Collection    Snapshot Collection                     Num     Replication
+Name                 Name                                    Snaps   Status
+--------------------+---------------------------------------+-------+-----------
+--------------------+---------------------------------------+-------+-----------
+Volume Collection    Snapshot Collection                     Num     Replication
+Name                 Name                                    Snaps   Status
+--------------------+---------------------------------------+-------+-----------
+testCG testSnap     100 False
