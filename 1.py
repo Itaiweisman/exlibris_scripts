@@ -11,7 +11,13 @@ for cg in cgs:
 	cg_name=cg.get_name()
 	count=cg.get_members_count()
 	rep_stat=cg.is_replicated()
-	if (not rep_stat):
+	reps=cg.get_replicas().to_list()
+	if (reps):
+		if reps[0].get_progress() == 100:
+			rep_stat='Complete'
+		else:
+			rep_stat='In-progress'
+	else:
 		rep_stat='N/A'
 	children=cg.get_children().to_list()
 	for child in children:
