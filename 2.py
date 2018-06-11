@@ -8,10 +8,16 @@ header = """ --------------------+--------------------+----------+------+-------
 Volume               Snapshot             Size       Online Status  New Data
 Name                 Name                 (MB)                      (MB)
 --------------------+--------------------+----------+------+-------+------------"""
-
+def get_master_id(vol):
+	if vol.get_type()=='MASTER':
+		return vol
+ 	else:
+		return get_master_id(vol.get_parent())
 print (header)
 for snap in vol_snaps:
-        parent=snap.get_family_master()
+        #parent=snap.get_family_master()
+	## to handle INFINIBOX-33269
+	parent=get_master_id(snap)
         if (parent.get_id()):
                 parent_name=parent.get_name()
                 name=snap.get_name()
@@ -22,7 +28,9 @@ for snap in vol_snaps:
 
 print (header)
 for snap in fs_snaps:
-        parent=snap.get_family_master()
+        #parent=snap.get_family_master()
+	# to handle INFINIBOX-33269
+	parent=get_master_id(snap)
         if (parent.get_id()):
                 parent_name=parent.get_name()
                 name=snap.get_name()
