@@ -11,6 +11,8 @@ for cg in cgs:
 	cg_name=cg.get_name()
 	count=cg.get_members_count()
 	rep_stat=cg.is_replicated()
+	if (not rep_stat):
+		rep_stat='N/A'
 	children=cg.get_children().to_list()
 	for child in children:
 		sg_name=child.get_name()
